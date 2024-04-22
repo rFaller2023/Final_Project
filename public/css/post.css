@@ -1,0 +1,70 @@
+/* post.css */
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for table container */
+.post-table {
+    max-width: 800px; /* Adjust as needed */
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Style for table heading */
+.post-table h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #ccc;
+}
+
+/* Style for table headers and cells */
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style for table header */
+table th {
+    background-color: #f2f2f2;
+}
+
+/* Style for even rows */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Style for rounded corners on the first header cell */
+table th:first-child {
+    border-top-left-radius: 8px;
+}
+
+/* Style for rounded corners on the last header cell */
+table th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Style for left border of data cells */
+table td:first-child {
+    border-left: 2px solid #ccc;
+}
+
+/* Style for right border of data cells */
+table td:last-child {
+    border-right: 2px solid #ccc;
+}
+
+/* Style for bottom border of last row */
+table tr:last-child td {
+    border-bottom: 2px solid #ccc;
+}
