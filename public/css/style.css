@@ -32,8 +32,8 @@ body {
     box-sizing: border-box;
 }
 
-.login-container input[type="submit"],
-.dashboard-container input[type="submit"] {
+.login-container button[type="submit"],
+.dashboard-container button[type="submit"] {
     width: 100%;
     background-color: #3a9892;
     color: white;
@@ -43,8 +43,8 @@ body {
     cursor: pointer;
 }
 
-.login-container input[type="submit"]:hover,
-.dashboard-container input[type="submit"]:hover {
+.login-container button[type="submit"]:hover,
+.dashboard-container button[type="submit"]:hover {
     background-color: #b55197;
 }
 
