@@ -18,10 +18,10 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Role</th>
+                        <th>Password</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id = "tableBody">
                     <tr>
                         {{-- <td>1</td>
                         <td>Rosemarie Faller</td>
@@ -36,6 +36,26 @@
                     </tr>
                 </tbody>
             </table>
+            <script>
+                fetch('api/user', {
+                    method: 'GET',
+                }).then(response => {
+                    return response.json();
+                }).then(data => {
+                    let tableBody = document.getElementById('tableBody');
+                    tableBody.innerHTML = '';
+
+                    for(let i=0; i < data.length; i++){
+                        let tableRow = ` <tr> 
+                            <td>${data[i].id}</td>
+                            <td>${data[i].name}</td>
+                            <td>${data[i].email}</td>
+                            <td>${data[i].password}</td>
+                            </tr>`;
+                            tableBody.innerHTML += tableRow;
+                    }
+                })
+            </script>
         </div>
     </div>
 </body>
