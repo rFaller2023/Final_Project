@@ -36,7 +36,17 @@
         {
             localStorage.removeItem('accessToken');
             window.location.href = '/welcome';
-        }
+
+                    var txt;
+                    if (confirm("You want to Logout!")) {
+                        txt = "You pressed OK!";
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                
+            }
+        
     </script>
 </body>
 </html>

@@ -1,50 +1,40 @@
-.user-table {
-    max-width: 600px; /* Adjust the max-width as needed */
-    margin: 50px auto;
+/* user.css */
+
+.container {
+    max-width: 800px;
+    margin-left: 350px;
+    margin-top: 50px;
     padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-table {
+    margin-top: 10px;
 }
 
 .user-table h2 {
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-table {
+.user-table table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid #ccc;
 }
 
-table th, table td {
+.user-table th, .user-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-table th {
+.user-table th {
     background-color: #f2f2f2;
 }
 
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table th:first-child {
-    border-top-left-radius: 8px;
-}
-
-table th:last-child {
-    border-top-right-radius: 8px;
-}
-
-table td:first-child {
-    border-left: 2px solid #ccc;
-}
-
-table td:last-child {
-    border-right: 2px solid #ccc;
-}
-
-table tr:last-child td {
-    border-bottom: 2px solid #ccc;
+.user-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }

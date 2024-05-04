@@ -24,3 +24,4 @@ Route::get('/dashboard', [LoginController::class, 'dashboard']);
 Route::get('/post', [PostController::class, 'post']);
 Route::get('/user', [UserController::class, 'user']);
 Route::get('/welcome', [LoginController::class, 'welcome']);
+// Route::get('/user', [UserController::class, 'getUser']);
