@@ -18,7 +18,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Password</th>
+                        <th>Address</th>
                     </tr>
                 </thead>
                 <tbody id = "tableBody">
@@ -34,10 +34,11 @@
                         <td>jane@example.com</td>
                         <td>User</td> --}}
                     </tr>
+                    <button type = "add">Add User</button>
                 </tbody>
             </table>
             <script>
-                fetch('api/user', {
+                fetch('api/userAll', {
                     method: 'GET',
                 }).then(response => {
                     return response.json();
@@ -50,7 +51,7 @@
                             <td>${data[i].id}</td>
                             <td>${data[i].name}</td>
                             <td>${data[i].email}</td>
-                            <td>${data[i].password}</td>
+                            <td>${data[i].address}</td>
                             </tr>`;
                             tableBody.innerHTML += tableRow;
                     }

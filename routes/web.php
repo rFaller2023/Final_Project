@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,5 @@ Route::get('/dashboard', [LoginController::class, 'dashboard']);
 Route::get('/post', [PostController::class, 'post']);
 Route::get('/user', [UserController::class, 'user']);
 Route::get('/welcome', [LoginController::class, 'welcome']);
-// Route::get('/user', [UserController::class, 'getUser']);
+Route::get('/home', [LoginController::class, 'home']);
+Route::get('/profile', [ProfileController::class, 'profile']);

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/sweetalert.min.js"></script>
 
     <script>
         const token = localStorage.getItem('accessToken');
@@ -19,7 +20,8 @@
         <div class="sidebar">
             <h2>Dashboard</h2>
             <ul>
-                <li><a href="/dashboard ">Home</a></li>
+                <li><a href="/home ">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
                 <li><a href="/post">Post</a></li>
                 <li><a href="/user">User</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
@@ -32,21 +34,24 @@
     @yield('table')
 
     <script>
-        function logout()
-        {
+        function logout() {
+    // Show the confirmation dialog
+    swal({
+        title: "Are you sure you want to logout?",
+        // text: "You will be redirected to the welcome page.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willLogout) => {
+        if (willLogout) {
             localStorage.removeItem('accessToken');
             window.location.href = '/welcome';
+        } else {
+            document.getElementById("demo").innerHTML = "You pressed Cancel!";
+        }
+    });
+}
 
-                    var txt;
-                    if (confirm("You want to Logout!")) {
-                        txt = "You pressed OK!";
-                    } else {
-                        txt = "You pressed Cancel!";
-                    }
-                    document.getElementById("demo").innerHTML = txt;
-                
-            }
-        
     </script>
 </body>
 </html>

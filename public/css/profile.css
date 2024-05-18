@@ -1,0 +1,55 @@
+.container {
+    margin-top: 50px;
+}
+
+.container .row .col-sm-8.col-md-6.col-lg-4 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-field {
+    margin-bottom: 20px;
+}
+
+.profile-field label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.profile-field img {
+    display: block;
+    max-width: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.button-field {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.modal-body .form-group label {
+    font-weight: bold;
+}
+
+#editUserModal .form-control {
+    margin-bottom: 10px;
+}

@@ -18,77 +18,87 @@
                 <label for="password">Password:</label>
             <input type="password" name="password" placeholder="Password" required>
             </div>
-            <div id="message" class="text-danger mb-3">
+            <div id="message" class="text-danger mb-3" style= "display: none">
+                Invalid Credentials!
             
             </div>
             <button type="submit">Login</button>
         </form>
+    
+    <div class="otp-container" id="otp-container" style="display: none;">
+        <h2>Enter OTP</h2>
+        <form id="otp-form">
+            <h3 id="otpmessage"></h3>
+            <label for="otp_code" class="form-label">OTP:</label>
+            <input type="number" name="otp_code" class="form-control" id="otp_code" placeholder="Enter OTP" required>
+            <br>
+            <button type="submit">Verify OTP</button>
+        </form>
     </div>
+</div>
     <script>
-        document.getElementById('login-form').addEventListener('submit', function(event){
-            event.preventDefault();
-            
-            const formData = new FormData(this);
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-                fetch('api/welcome',{
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        Accept: 'application/json',
-                        Authorization: 'Bearer' + localStorage.getItem('token'),
+    const formData = new FormData(this);
 
-                    }  
-                              
-                }).then(res =>{
-                    console.log(res);
-                    return res.json();
+    fetch("api/welcome", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            Accept: 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        }
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            document.getElementById('login-form').style.display = 'none';
+            document.querySelector('.otp-container').style.display = 'block'; 
+        } else {
+            document.getElementById('message').innerText = data.message;
+            document.getElementById('message').style.color = "red";
+        }
+    }).catch(error => {
+        console.error("Something went wrong with your fetch", error);
+    });
+});
 
-                }).then(res => {
-                    console.log(res);
-                    if(res.token) {
-                    localStorage.setItem('accessToken', res.token);
-                    window.location.href = '/dashboard';                              
-                } else{
-                    let messageDiv = document.getElementById('message');
-                    messageDiv.innerHtml = res.message;
-                    messageDiv.style = 'display:block';
 
-                }
-            });
-            
-        });
-        // document.addEventListener('DOMContentLoaded', function(){
-        //     document.querySelector('.login-form').addEventListener('submit',function(event){
-        //         event.preventDefault();
+document.getElementById('otp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        //         const formData = new FormData(this);
+    const formData = new FormData(this);
+    const token = localStorage.getItem('token'); 
 
-        //         fetch('api/login',{
-        //             method: 'POST',
-        //             Body: formData,
-        //             headers: {
-        //                 Acceppt: 'application/json',
+    formData.append('token', token); 
 
-        //             }  
-                              
-        //         }).then(res =>{
-        //             console.log(res);
-        //             return res.json();
+    fetch("api/verifyOTP", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            Accept: 'application/json',
+            Authorization: 'Bearer ' + token, 
+        }
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        if (data.status) {
+            localStorage.setItem('accessToken', data.accessToken); 
+            window.location.href = '/dashboard'; 
+        } else {
+            document.getElementById('otpmessage').textContent = data.message;
+            document.getElementById('otpmessage').style.color = "red";
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+});
 
-        //         }).then(res => {
-        //             console.log(res);
-        //             if(res.access_token) {
-        //             localStorage.setItem('accessToken', res.access_Token);
-        //             window.location.href = '/users';                              
-        //         } else{
-        //             let messageDiv = document.getElementId('message');
-        //             messageDiv.innerHtml = res.message;
-        //             messageDiv.style = 'display:block';
-
-        //         }
-        //         })
-        //     });
-        // })
+           
+    </script>
+           
     </script>
 </body>
 </html>

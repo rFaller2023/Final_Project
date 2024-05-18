@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('welcome', [LoginController::class, 'login']);
+
+Route::post('welcome', [LoginController::class, 'loginUser']);
+Route::post('verifyOTP', [LoginController::class, 'verifyOTP']);
 // Route::middleware('auth:api')->group(function(){
     Route::get('users', [LoginController::class, 'users']);
 
@@ -25,4 +27,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/user', [UserController::class, 'getUser']);
+Route::get('/userAll', [UserController::class, 'getUser']);
